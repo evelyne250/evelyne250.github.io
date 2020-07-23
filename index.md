@@ -1,9 +1,10 @@
 ## Welcome to My Blog
 
-## Twitter User Segmentation & Mining
+## Twitter Mining & Web Scraping
 
 Twitter is an American microblogging and social networking service on which users post and interact with messages known as "tweets". Registered users can post, like, and retweet tweets, but unregistered users can only read them as defined by Wikipedia.
 Twitter allows us to get developer access which can allow us to do data analysis using Twitter api. To be able to extract data from the twitter api you should first create a developer account on the Twitter apps site, Then log in after that you will need to create an app so as to be able to get the consumer key, consumer secret, access key and access secret which will help you in Authentication.
+
 
 ### Installation
 
@@ -23,7 +24,8 @@ Syntax highlighted code block
 1. Numbered
 2. List
 
-**Bold** and _Italic_ and 
+**Modules** 
+
 `!pip install tweepy
 import tweepy
 from tweepy.streaming import StreamListener
@@ -38,44 +40,37 @@ access_key = "XXXXXXXXXXXXXXXXXXXXXX"
 access_secret = "XXXXXXXXXXXXXXXXXX"
 
 # Function to extract tweets 
-def get_tweets(username): 
-		
+def get_tweets(username):
+
+		## This handles Twitter authentification and the connection to Twitter Streaming API
 		# Authorization to consumer key and consumer secret 
 		auth = tweepy.OAuthHandler(consumer_key, consumer_secret) 
 
-		# Access to user's access key and access secret 
+		# Authorization to user's access key and access secret 
 		auth.set_access_token(access_key, access_secret) 
 
 		# Calling api 
 		api = tweepy.API(auth) 
 
-		# 200 tweets to be extracted 
-		number_of_tweets=200
-		tweets = api.user_timeline(screen_name=username) 
+		# tweets to be extracted 
+		tweets = api.user_timeline(screen_name=username, count=20) 
 
 		# Empty Array 
-		tmp=[] 
+		u =[] 
+		tweet = [i.text for i in tweets]
+		for i in tweets: 
 
-		# create array of tweet information: username, 
-		# tweet id, date/time, text 
-		tweets_for_csv = [tweet.text for tweet in tweets] # CSV file created 
-		for j in tweets_for_csv: 
-
-			# Appending tweets to the empty array tmp 
-			tmp.append(j) 
+			# Appending tweets to the empty array u 
+			u.append(i) 
 
 		# Printing the tweets 
-		print(tmp) 
+		print(u) 
+
+` 
+From This code We first install tweepy and import modules, Then we authenticate using the credentials obtained from the Twitter developer account.
+Write a function of getting tweets for Twitter handles by first authenticating your key and calling the api Then Extract data from the api.
 
 
-# Driver code 
-if __name__ == '__main__': 
-
-	# Here goes the twitter handle for the user 
-	# whose tweets are to be extracted. 
-	get_tweets("twitter-handle") 
-
-` text
 
 [Link](url) and ![Image](src)
 ```
