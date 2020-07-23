@@ -117,5 +117,6 @@ To scrape data you will first install modules and packages of Beautiful soup The
  [Datacamp](https://www.datacamp.com/community/tutorials/web-scraping-using-python)
 
 ### Author
-Names : Evelyne Umuhire <br>
+Names : Evelyne Umuhire 
+
 Email: Uevelyne44@gmail.com
